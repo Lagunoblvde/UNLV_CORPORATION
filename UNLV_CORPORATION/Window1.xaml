@@ -1,0 +1,30 @@
+﻿<Window x:Class="UNLV_CORPORATION.Window1"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UNLV_CORPORATION"
+        mc:Ignorable="d"
+        Title="Window1" Height="537" Width="800">
+    <Grid>
+        <Frame x:Name="Frame" Margin="0,39,0,33" NavigationUIVisibility="Hidden"/>
+        <ComboBox x:Name="ViborTablici_Cbx" HorizontalAlignment="Center" VerticalAlignment="Top" Width="780" Height="39" SelectionChanged="ViborTablici_Cbx_SelectionChanged">
+            <ComboBoxItem Content="Клиенты"/>
+            <ComboBoxItem Content="Сотрудники"/>
+            <ComboBoxItem Content="Пользователи"/>
+            <ComboBoxItem Content="Товары"/>
+            <ComboBoxItem Content="Чек"/>
+            <ComboBoxItem Content="Роли"/>
+            <ComboBoxItem Content="Авторизация"/>
+            <ComboBoxItem Content="Акции"/>
+            <ComboBoxItem Content="Статус Клиента"/>
+            <ComboBoxItem Content="Артикль Товара"/>
+            <ComboBoxItem Content="История Просмотра"/>
+            <ComboBoxItem Content="Просмотры-Клиенты"/>
+            <ComboBoxItem Content="Чек-Товары"/>
+            <ComboBoxItem Content="Должность Сотрудника"/>
+        </ComboBox>
+        <Button x:Name="Backup" Content="Бэкап" HorizontalAlignment="Left" Margin="114,488,0,0" VerticalAlignment="Top" Height="33" Width="170" Click="Backup_Click"/>
+    </Grid>
+</Window>

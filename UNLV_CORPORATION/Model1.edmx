@@ -1,0 +1,964 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище UNLV_CORPORATIONModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Avt">
+          <Key>
+            <PropertyRef Name="ID_Avt" />
+          </Key>
+          <Property Name="ID_Avt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login_user" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Password_user" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Role_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cheque">
+          <Key>
+            <PropertyRef Name="ID_Cheque" />
+          </Key>
+          <Property Name="ID_Cheque" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumberCheque" Type="int" Nullable="false" />
+          <Property Name="Client_ID" Type="int" Nullable="false" />
+          <Property Name="Employee_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cheque_Good">
+          <Key>
+            <PropertyRef Name="ID_ChequeGood" />
+          </Key>
+          <Property Name="ID_ChequeGood" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SumOfCheque" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Good_ID" Type="int" Nullable="false" />
+          <Property Name="Cheque_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client_History">
+          <Key>
+            <PropertyRef Name="ID_ClientHistory" />
+          </Key>
+          <Property Name="ID_ClientHistory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Client_ID" Type="int" Nullable="false" />
+          <Property Name="ViewHistory_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="ID_Client" />
+          </Key>
+          <Property Name="ID_Client" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstNameClient" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SurNameClient" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="MiddleNameClient" Type="varchar" MaxLength="20" />
+          <Property Name="PhoneNumberClient" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="StatusClient_ID" Type="int" Nullable="false" />
+          <Property Name="Role_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientStatus">
+          <Key>
+            <PropertyRef Name="ID_StatusC" />
+          </Key>
+          <Property Name="ID_StatusC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameStatusC" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Stocks_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="ID_Employee" />
+          </Key>
+          <Property Name="ID_Employee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstNameEmployee" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SurNameEmployee" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="MiddleNameEmployee" Type="varchar" MaxLength="20" />
+          <Property Name="Post_ID" Type="int" Nullable="false" />
+          <Property Name="Role_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Good_Article">
+          <Key>
+            <PropertyRef Name="ID_GoodArticl" />
+          </Key>
+          <Property Name="ID_GoodArticl" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameArticle" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Goods">
+          <Key>
+            <PropertyRef Name="ID_Good" />
+          </Key>
+          <Property Name="ID_Good" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameGood" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CostGood" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Article_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PostEmployee">
+          <Key>
+            <PropertyRef Name="ID_Post" />
+          </Key>
+          <Property Name="ID_Post" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NamePost" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="ID_Role" />
+          </Key>
+          <Property Name="ID_Role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameRole" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stocks">
+          <Key>
+            <PropertyRef Name="ID_Stocks" />
+          </Key>
+          <Property Name="ID_Stocks" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameStock" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="BeginingDate" Type="date" Nullable="false" />
+          <Property Name="EndingDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID_User" />
+          </Key>
+          <Property Name="ID_User" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstNameUser" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SurNameUser" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Avt_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_History">
+          <Key>
+            <PropertyRef Name="ID_ViewHistory" />
+          </Key>
+          <Property Name="ID_ViewHistory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Good_ID" Type="int" Nullable="false" />
+          <Property Name="Viewdate" Type="date" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Avt__Role_ID__3C69FB99">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Avt" Type="Self.Avt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID_Role" />
+            </Principal>
+            <Dependent Role="Avt">
+              <PropertyRef Name="Role_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cheque__Client_I__5BE2A6F2">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="Cheque" Type="Self.Cheque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ID_Client" />
+            </Principal>
+            <Dependent Role="Cheque">
+              <PropertyRef Name="Client_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cheque__Employee__5CD6CB2B">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Cheque" Type="Self.Cheque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID_Employee" />
+            </Principal>
+            <Dependent Role="Cheque">
+              <PropertyRef Name="Employee_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cheque_Go__Chequ__60A75C0F">
+          <End Role="Cheque" Type="Self.Cheque" Multiplicity="1" />
+          <End Role="Cheque_Good" Type="Self.Cheque_Good" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cheque">
+              <PropertyRef Name="ID_Cheque" />
+            </Principal>
+            <Dependent Role="Cheque_Good">
+              <PropertyRef Name="Cheque_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cheque_Go__Good___5FB337D6">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="1" />
+          <End Role="Cheque_Good" Type="Self.Cheque_Good" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="ID_Good" />
+            </Principal>
+            <Dependent Role="Cheque_Good">
+              <PropertyRef Name="Good_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client_Hi__ViewH__5812160E">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="Client_History" Type="Self.Client_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ID_Client" />
+            </Principal>
+            <Dependent Role="Client_History">
+              <PropertyRef Name="Client_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client_Hi__ViewH__59063A47">
+          <End Role="View_History" Type="Self.View_History" Multiplicity="1" />
+          <End Role="Client_History" Type="Self.Client_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="View_History">
+              <PropertyRef Name="ID_ViewHistory" />
+            </Principal>
+            <Dependent Role="Client_History">
+              <PropertyRef Name="ViewHistory_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Clients__Role_ID__4CA06362">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID_Role" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="Role_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Clients__StatusC__4BAC3F29">
+          <End Role="ClientStatus" Type="Self.ClientStatus" Multiplicity="1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientStatus">
+              <PropertyRef Name="ID_StatusC" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="StatusClient_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ClientSta__Stock__4316F928">
+          <End Role="Stocks" Type="Self.Stocks" Multiplicity="1" />
+          <End Role="ClientStatus" Type="Self.ClientStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stocks">
+              <PropertyRef Name="ID_Stocks" />
+            </Principal>
+            <Dependent Role="ClientStatus">
+              <PropertyRef Name="Stocks_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__Post___52593CB8">
+          <End Role="PostEmployee" Type="Self.PostEmployee" Multiplicity="1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PostEmployee">
+              <PropertyRef Name="ID_Post" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="Post_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__Role___5165187F">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID_Role" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="Role_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Goods__Article_I__48CFD27E">
+          <End Role="Good_Article" Type="Self.Good_Article" Multiplicity="1" />
+          <End Role="Goods" Type="Self.Goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Good_Article">
+              <PropertyRef Name="ID_GoodArticl" />
+            </Principal>
+            <Dependent Role="Goods">
+              <PropertyRef Name="Article_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__Avt_ID__3F466844">
+          <End Role="Avt" Type="Self.Avt" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Avt">
+              <PropertyRef Name="ID_Avt" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Avt_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__View_Hist__Viewd__5535A963">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="1" />
+          <End Role="View_History" Type="Self.View_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="ID_Good" />
+            </Principal>
+            <Dependent Role="View_History">
+              <PropertyRef Name="Good_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище UNLV_CORPORATIONModelContainer">
+          <EntitySet Name="Avt" EntityType="Self.Avt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cheque" EntityType="Self.Cheque" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cheque_Good" EntityType="Self.Cheque_Good" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client_History" EntityType="Self.Client_History" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientStatus" EntityType="Self.ClientStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Good_Article" EntityType="Self.Good_Article" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Goods" EntityType="Self.Goods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PostEmployee" EntityType="Self.PostEmployee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stocks" EntityType="Self.Stocks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_History" EntityType="Self.View_History" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Avt__Role_ID__3C69FB99" Association="Self.FK__Avt__Role_ID__3C69FB99">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Avt" EntitySet="Avt" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cheque__Client_I__5BE2A6F2" Association="Self.FK__Cheque__Client_I__5BE2A6F2">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Cheque" EntitySet="Cheque" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cheque__Employee__5CD6CB2B" Association="Self.FK__Cheque__Employee__5CD6CB2B">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Cheque" EntitySet="Cheque" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cheque_Go__Chequ__60A75C0F" Association="Self.FK__Cheque_Go__Chequ__60A75C0F">
+            <End Role="Cheque" EntitySet="Cheque" />
+            <End Role="Cheque_Good" EntitySet="Cheque_Good" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cheque_Go__Good___5FB337D6" Association="Self.FK__Cheque_Go__Good___5FB337D6">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="Cheque_Good" EntitySet="Cheque_Good" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client_Hi__ViewH__5812160E" Association="Self.FK__Client_Hi__ViewH__5812160E">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Client_History" EntitySet="Client_History" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client_Hi__ViewH__59063A47" Association="Self.FK__Client_Hi__ViewH__59063A47">
+            <End Role="View_History" EntitySet="View_History" />
+            <End Role="Client_History" EntitySet="Client_History" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Clients__Role_ID__4CA06362" Association="Self.FK__Clients__Role_ID__4CA06362">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Clients__StatusC__4BAC3F29" Association="Self.FK__Clients__StatusC__4BAC3F29">
+            <End Role="ClientStatus" EntitySet="ClientStatus" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ClientSta__Stock__4316F928" Association="Self.FK__ClientSta__Stock__4316F928">
+            <End Role="Stocks" EntitySet="Stocks" />
+            <End Role="ClientStatus" EntitySet="ClientStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__Post___52593CB8" Association="Self.FK__Employees__Post___52593CB8">
+            <End Role="PostEmployee" EntitySet="PostEmployee" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__Role___5165187F" Association="Self.FK__Employees__Role___5165187F">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Goods__Article_I__48CFD27E" Association="Self.FK__Goods__Article_I__48CFD27E">
+            <End Role="Good_Article" EntitySet="Good_Article" />
+            <End Role="Goods" EntitySet="Goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__Avt_ID__3F466844" Association="Self.FK__Users__Avt_ID__3F466844">
+            <End Role="Avt" EntitySet="Avt" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__View_Hist__Viewd__5535A963" Association="Self.FK__View_Hist__Viewd__5535A963">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="View_History" EntitySet="View_History" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UNLV_CORPORATIONModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Avt">
+          <Key>
+            <PropertyRef Name="ID_Avt" />
+          </Key>
+          <Property Name="ID_Avt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login_user" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password_user" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Role_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK__Avt__Role_ID__3C69FB99" FromRole="Avt" ToRole="Roles" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Users__Avt_ID__3F466844" FromRole="Avt" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Cheque">
+          <Key>
+            <PropertyRef Name="ID_Cheque" />
+          </Key>
+          <Property Name="ID_Cheque" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumberCheque" Type="Int32" Nullable="false" />
+          <Property Name="Client_ID" Type="Int32" Nullable="false" />
+          <Property Name="Employee_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK__Cheque__Client_I__5BE2A6F2" FromRole="Cheque" ToRole="Clients" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Cheque__Employee__5CD6CB2B" FromRole="Cheque" ToRole="Employees" />
+          <NavigationProperty Name="Cheque_Good" Relationship="Self.FK__Cheque_Go__Chequ__60A75C0F" FromRole="Cheque" ToRole="Cheque_Good" />
+        </EntityType>
+        <EntityType Name="Cheque_Good">
+          <Key>
+            <PropertyRef Name="ID_ChequeGood" />
+          </Key>
+          <Property Name="ID_ChequeGood" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SumOfCheque" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Good_ID" Type="Int32" Nullable="false" />
+          <Property Name="Cheque_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cheque" Relationship="Self.FK__Cheque_Go__Chequ__60A75C0F" FromRole="Cheque_Good" ToRole="Cheque" />
+          <NavigationProperty Name="Goods" Relationship="Self.FK__Cheque_Go__Good___5FB337D6" FromRole="Cheque_Good" ToRole="Goods" />
+        </EntityType>
+        <EntityType Name="Client_History">
+          <Key>
+            <PropertyRef Name="ID_ClientHistory" />
+          </Key>
+          <Property Name="ID_ClientHistory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Client_ID" Type="Int32" Nullable="false" />
+          <Property Name="ViewHistory_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK__Client_Hi__ViewH__5812160E" FromRole="Client_History" ToRole="Clients" />
+          <NavigationProperty Name="View_History" Relationship="Self.FK__Client_Hi__ViewH__59063A47" FromRole="Client_History" ToRole="View_History" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="ID_Client" />
+          </Key>
+          <Property Name="ID_Client" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstNameClient" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SurNameClient" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MiddleNameClient" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumberClient" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StatusClient_ID" Type="Int32" Nullable="false" />
+          <Property Name="Role_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cheque" Relationship="Self.FK__Cheque__Client_I__5BE2A6F2" FromRole="Clients" ToRole="Cheque" />
+          <NavigationProperty Name="Client_History" Relationship="Self.FK__Client_Hi__ViewH__5812160E" FromRole="Clients" ToRole="Client_History" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK__Clients__Role_ID__4CA06362" FromRole="Clients" ToRole="Roles" />
+          <NavigationProperty Name="ClientStatus" Relationship="Self.FK__Clients__StatusC__4BAC3F29" FromRole="Clients" ToRole="ClientStatus" />
+        </EntityType>
+        <EntityType Name="ClientStatus">
+          <Key>
+            <PropertyRef Name="ID_StatusC" />
+          </Key>
+          <Property Name="ID_StatusC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameStatusC" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Stocks_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK__Clients__StatusC__4BAC3F29" FromRole="ClientStatus" ToRole="Clients" />
+          <NavigationProperty Name="Stocks" Relationship="Self.FK__ClientSta__Stock__4316F928" FromRole="ClientStatus" ToRole="Stocks" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="ID_Employee" />
+          </Key>
+          <Property Name="ID_Employee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstNameEmployee" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SurNameEmployee" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MiddleNameEmployee" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Post_ID" Type="Int32" Nullable="false" />
+          <Property Name="Role_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cheque" Relationship="Self.FK__Cheque__Employee__5CD6CB2B" FromRole="Employees" ToRole="Cheque" />
+          <NavigationProperty Name="PostEmployee" Relationship="Self.FK__Employees__Post___52593CB8" FromRole="Employees" ToRole="PostEmployee" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK__Employees__Role___5165187F" FromRole="Employees" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="Good_Article">
+          <Key>
+            <PropertyRef Name="ID_GoodArticl" />
+          </Key>
+          <Property Name="ID_GoodArticl" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameArticle" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Goods" Relationship="Self.FK__Goods__Article_I__48CFD27E" FromRole="Good_Article" ToRole="Goods" />
+        </EntityType>
+        <EntityType Name="Goods">
+          <Key>
+            <PropertyRef Name="ID_Good" />
+          </Key>
+          <Property Name="ID_Good" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameGood" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CostGood" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Article_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cheque_Good" Relationship="Self.FK__Cheque_Go__Good___5FB337D6" FromRole="Goods" ToRole="Cheque_Good" />
+          <NavigationProperty Name="Good_Article" Relationship="Self.FK__Goods__Article_I__48CFD27E" FromRole="Goods" ToRole="Good_Article" />
+          <NavigationProperty Name="View_History" Relationship="Self.FK__View_Hist__Viewd__5535A963" FromRole="Goods" ToRole="View_History" />
+        </EntityType>
+        <EntityType Name="PostEmployee">
+          <Key>
+            <PropertyRef Name="ID_Post" />
+          </Key>
+          <Property Name="ID_Post" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NamePost" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Employees__Post___52593CB8" FromRole="PostEmployee" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="ID_Role" />
+          </Key>
+          <Property Name="ID_Role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameRole" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Avt" Relationship="Self.FK__Avt__Role_ID__3C69FB99" FromRole="Roles" ToRole="Avt" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK__Clients__Role_ID__4CA06362" FromRole="Roles" ToRole="Clients" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Employees__Role___5165187F" FromRole="Roles" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="Stocks">
+          <Key>
+            <PropertyRef Name="ID_Stocks" />
+          </Key>
+          <Property Name="ID_Stocks" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameStock" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BeginingDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndingDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="ClientStatus" Relationship="Self.FK__ClientSta__Stock__4316F928" FromRole="Stocks" ToRole="ClientStatus" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID_User" />
+          </Key>
+          <Property Name="ID_User" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstNameUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SurNameUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Avt_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Avt" Relationship="Self.FK__Users__Avt_ID__3F466844" FromRole="Users" ToRole="Avt" />
+        </EntityType>
+        <EntityType Name="View_History">
+          <Key>
+            <PropertyRef Name="ID_ViewHistory" />
+          </Key>
+          <Property Name="ID_ViewHistory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Good_ID" Type="Int32" Nullable="false" />
+          <Property Name="Viewdate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Client_History" Relationship="Self.FK__Client_Hi__ViewH__59063A47" FromRole="View_History" ToRole="Client_History" />
+          <NavigationProperty Name="Goods" Relationship="Self.FK__View_Hist__Viewd__5535A963" FromRole="View_History" ToRole="Goods" />
+        </EntityType>
+        <Association Name="FK__Avt__Role_ID__3C69FB99">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Avt" Type="Self.Avt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID_Role" />
+            </Principal>
+            <Dependent Role="Avt">
+              <PropertyRef Name="Role_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__Avt_ID__3F466844">
+          <End Role="Avt" Type="Self.Avt" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Avt">
+              <PropertyRef Name="ID_Avt" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Avt_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cheque__Client_I__5BE2A6F2">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="Cheque" Type="Self.Cheque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ID_Client" />
+            </Principal>
+            <Dependent Role="Cheque">
+              <PropertyRef Name="Client_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cheque__Employee__5CD6CB2B">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Cheque" Type="Self.Cheque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID_Employee" />
+            </Principal>
+            <Dependent Role="Cheque">
+              <PropertyRef Name="Employee_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cheque_Go__Chequ__60A75C0F">
+          <End Role="Cheque" Type="Self.Cheque" Multiplicity="1" />
+          <End Role="Cheque_Good" Type="Self.Cheque_Good" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cheque">
+              <PropertyRef Name="ID_Cheque" />
+            </Principal>
+            <Dependent Role="Cheque_Good">
+              <PropertyRef Name="Cheque_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cheque_Go__Good___5FB337D6">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="1" />
+          <End Role="Cheque_Good" Type="Self.Cheque_Good" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="ID_Good" />
+            </Principal>
+            <Dependent Role="Cheque_Good">
+              <PropertyRef Name="Good_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client_Hi__ViewH__5812160E">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="Client_History" Type="Self.Client_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ID_Client" />
+            </Principal>
+            <Dependent Role="Client_History">
+              <PropertyRef Name="Client_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client_Hi__ViewH__59063A47">
+          <End Role="View_History" Type="Self.View_History" Multiplicity="1" />
+          <End Role="Client_History" Type="Self.Client_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="View_History">
+              <PropertyRef Name="ID_ViewHistory" />
+            </Principal>
+            <Dependent Role="Client_History">
+              <PropertyRef Name="ViewHistory_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Clients__Role_ID__4CA06362">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID_Role" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="Role_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Clients__StatusC__4BAC3F29">
+          <End Role="ClientStatus" Type="Self.ClientStatus" Multiplicity="1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientStatus">
+              <PropertyRef Name="ID_StatusC" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="StatusClient_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ClientSta__Stock__4316F928">
+          <End Role="Stocks" Type="Self.Stocks" Multiplicity="1" />
+          <End Role="ClientStatus" Type="Self.ClientStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stocks">
+              <PropertyRef Name="ID_Stocks" />
+            </Principal>
+            <Dependent Role="ClientStatus">
+              <PropertyRef Name="Stocks_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__Post___52593CB8">
+          <End Role="PostEmployee" Type="Self.PostEmployee" Multiplicity="1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PostEmployee">
+              <PropertyRef Name="ID_Post" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="Post_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__Role___5165187F">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID_Role" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="Role_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Goods__Article_I__48CFD27E">
+          <End Role="Good_Article" Type="Self.Good_Article" Multiplicity="1" />
+          <End Role="Goods" Type="Self.Goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Good_Article">
+              <PropertyRef Name="ID_GoodArticl" />
+            </Principal>
+            <Dependent Role="Goods">
+              <PropertyRef Name="Article_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__View_Hist__Viewd__5535A963">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="1" />
+          <End Role="View_History" Type="Self.View_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="ID_Good" />
+            </Principal>
+            <Dependent Role="View_History">
+              <PropertyRef Name="Good_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UNLV_CORPORATIONEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Avt" EntityType="Self.Avt" />
+          <EntitySet Name="Cheque" EntityType="Self.Cheque" />
+          <EntitySet Name="Cheque_Good" EntityType="Self.Cheque_Good" />
+          <EntitySet Name="Client_History" EntityType="Self.Client_History" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" />
+          <EntitySet Name="ClientStatus" EntityType="Self.ClientStatus" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" />
+          <EntitySet Name="Good_Article" EntityType="Self.Good_Article" />
+          <EntitySet Name="Goods" EntityType="Self.Goods" />
+          <EntitySet Name="PostEmployee" EntityType="Self.PostEmployee" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="Stocks" EntityType="Self.Stocks" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="View_History" EntityType="Self.View_History" />
+          <AssociationSet Name="FK__Avt__Role_ID__3C69FB99" Association="Self.FK__Avt__Role_ID__3C69FB99">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Avt" EntitySet="Avt" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__Avt_ID__3F466844" Association="Self.FK__Users__Avt_ID__3F466844">
+            <End Role="Avt" EntitySet="Avt" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cheque__Client_I__5BE2A6F2" Association="Self.FK__Cheque__Client_I__5BE2A6F2">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Cheque" EntitySet="Cheque" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cheque__Employee__5CD6CB2B" Association="Self.FK__Cheque__Employee__5CD6CB2B">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Cheque" EntitySet="Cheque" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cheque_Go__Chequ__60A75C0F" Association="Self.FK__Cheque_Go__Chequ__60A75C0F">
+            <End Role="Cheque" EntitySet="Cheque" />
+            <End Role="Cheque_Good" EntitySet="Cheque_Good" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cheque_Go__Good___5FB337D6" Association="Self.FK__Cheque_Go__Good___5FB337D6">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="Cheque_Good" EntitySet="Cheque_Good" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client_Hi__ViewH__5812160E" Association="Self.FK__Client_Hi__ViewH__5812160E">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Client_History" EntitySet="Client_History" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client_Hi__ViewH__59063A47" Association="Self.FK__Client_Hi__ViewH__59063A47">
+            <End Role="View_History" EntitySet="View_History" />
+            <End Role="Client_History" EntitySet="Client_History" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Clients__Role_ID__4CA06362" Association="Self.FK__Clients__Role_ID__4CA06362">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Clients__StatusC__4BAC3F29" Association="Self.FK__Clients__StatusC__4BAC3F29">
+            <End Role="ClientStatus" EntitySet="ClientStatus" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ClientSta__Stock__4316F928" Association="Self.FK__ClientSta__Stock__4316F928">
+            <End Role="Stocks" EntitySet="Stocks" />
+            <End Role="ClientStatus" EntitySet="ClientStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__Post___52593CB8" Association="Self.FK__Employees__Post___52593CB8">
+            <End Role="PostEmployee" EntitySet="PostEmployee" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__Role___5165187F" Association="Self.FK__Employees__Role___5165187F">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Goods__Article_I__48CFD27E" Association="Self.FK__Goods__Article_I__48CFD27E">
+            <End Role="Good_Article" EntitySet="Good_Article" />
+            <End Role="Goods" EntitySet="Goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK__View_Hist__Viewd__5535A963" Association="Self.FK__View_Hist__Viewd__5535A963">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="View_History" EntitySet="View_History" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище UNLV_CORPORATIONModelContainer" CdmEntityContainer="UNLV_CORPORATIONEntities1">
+          <EntitySetMapping Name="Avt">
+            <EntityTypeMapping TypeName="UNLV_CORPORATIONModel.Avt">
+              <MappingFragment StoreEntitySet="Avt">
+                <ScalarProperty Name="ID_Avt" ColumnName="ID_Avt" />
+                <ScalarProperty Name="Login_user" ColumnName="Login_user" />
+                <ScalarProperty Name="Password_user" ColumnName="Password_user" />
+                <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cheque">
+            <EntityTypeMapping TypeName="UNLV_CORPORATIONModel.Cheque">
+              <MappingFragment StoreEntitySet="Cheque">
+                <ScalarProperty Name="ID_Cheque" ColumnName="ID_Cheque" />
+                <ScalarProperty Name="NumberCheque" ColumnName="NumberCheque" />
+                <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cheque_Good">
+            <EntityTypeMapping TypeName="UNLV_CORPORATIONModel.Cheque_Good">
+              <MappingFragment StoreEntitySet="Cheque_Good">
+                <ScalarProperty Name="ID_ChequeGood" ColumnName="ID_ChequeGood" />
+                <ScalarProperty Name="SumOfCheque" ColumnName="SumOfCheque" />
+                <ScalarProperty Name="Good_ID" ColumnName="Good_ID" />
+                <ScalarProperty Name="Cheque_ID" ColumnName="Cheque_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client_History">
+            <EntityTypeMapping TypeName="UNLV_CORPORATIONModel.Client_History">
+              <MappingFragment StoreEntitySet="Client_History">
+                <ScalarProperty Name="ID_ClientHistory" ColumnName="ID_ClientHistory" />
+                <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+                <ScalarProperty Name="ViewHistory_ID" ColumnName="ViewHistory_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="UNLV_CORPORATIONModel.Clients">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="ID_Client" ColumnName="ID_Client" />
+                <ScalarProperty Name="FirstNameClient" ColumnName="FirstNameClient" />
+                <ScalarProperty Name="SurNameClient" ColumnName="SurNameClient" />
+                <ScalarProperty Name="MiddleNameClient" ColumnName="MiddleNameClient" />
+                <ScalarProperty Name="PhoneNumberClient" ColumnName="PhoneNumberClient" />
+                <ScalarProperty Name="StatusClient_ID" ColumnName="StatusClient_ID" />
+                <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientStatus">
+            <EntityTypeMapping TypeName="UNLV_CORPORATIONModel.ClientStatus">
+              <MappingFragment StoreEntitySet="ClientStatus">
+                <ScalarProperty Name="ID_StatusC" ColumnName="ID_StatusC" />
+                <ScalarProperty Name="NameStatusC" ColumnName="NameStatusC" />
+                <ScalarProperty Name="Stocks_ID" ColumnName="Stocks_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="UNLV_CORPORATIONModel.Employees">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="ID_Employee" ColumnName="ID_Employee" />
+                <ScalarProperty Name="FirstNameEmployee" ColumnName="FirstNameEmployee" />
+                <ScalarProperty Name="SurNameEmployee" ColumnName="SurNameEmployee" />
+                <ScalarProperty Name="MiddleNameEmployee" ColumnName="MiddleNameEmployee" />
+                <ScalarProperty Name="Post_ID" ColumnName="Post_ID" />
+                <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Good_Article">
+            <EntityTypeMapping TypeName="UNLV_CORPORATIONModel.Good_Article">
+              <MappingFragment StoreEntitySet="Good_Article">
+                <ScalarProperty Name="ID_GoodArticl" ColumnName="ID_GoodArticl" />
+                <ScalarProperty Name="NameArticle" ColumnName="NameArticle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Goods">
+            <EntityTypeMapping TypeName="UNLV_CORPORATIONModel.Goods">
+              <MappingFragment StoreEntitySet="Goods">
+                <ScalarProperty Name="ID_Good" ColumnName="ID_Good" />
+                <ScalarProperty Name="NameGood" ColumnName="NameGood" />
+                <ScalarProperty Name="CostGood" ColumnName="CostGood" />
+                <ScalarProperty Name="Article_ID" ColumnName="Article_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PostEmployee">
+            <EntityTypeMapping TypeName="UNLV_CORPORATIONModel.PostEmployee">
+              <MappingFragment StoreEntitySet="PostEmployee">
+                <ScalarProperty Name="ID_Post" ColumnName="ID_Post" />
+                <ScalarProperty Name="NamePost" ColumnName="NamePost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="UNLV_CORPORATIONModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="ID_Role" ColumnName="ID_Role" />
+                <ScalarProperty Name="NameRole" ColumnName="NameRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stocks">
+            <EntityTypeMapping TypeName="UNLV_CORPORATIONModel.Stocks">
+              <MappingFragment StoreEntitySet="Stocks">
+                <ScalarProperty Name="ID_Stocks" ColumnName="ID_Stocks" />
+                <ScalarProperty Name="NameStock" ColumnName="NameStock" />
+                <ScalarProperty Name="BeginingDate" ColumnName="BeginingDate" />
+                <ScalarProperty Name="EndingDate" ColumnName="EndingDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="UNLV_CORPORATIONModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+                <ScalarProperty Name="FirstNameUser" ColumnName="FirstNameUser" />
+                <ScalarProperty Name="SurNameUser" ColumnName="SurNameUser" />
+                <ScalarProperty Name="Avt_ID" ColumnName="Avt_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_History">
+            <EntityTypeMapping TypeName="UNLV_CORPORATIONModel.View_History">
+              <MappingFragment StoreEntitySet="View_History">
+                <ScalarProperty Name="ID_ViewHistory" ColumnName="ID_ViewHistory" />
+                <ScalarProperty Name="Good_ID" ColumnName="Good_ID" />
+                <ScalarProperty Name="Viewdate" ColumnName="Viewdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
